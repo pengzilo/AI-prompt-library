@@ -1,0 +1,927 @@
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midjourney 棚子 提示词库</title>
+<script src="https://hm.baidu.com/hm.js?d67baafd318097a18e70ee8d8d1de57a"></script><script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('/core/images/bj1.png');/**背景地址**/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: slideshow 3s infinite;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    position: relative; /* Use relative positioning */
+    top: auto;
+    left: auto;
+    transform: none; /* Remove transform */
+    margin: 20px auto; /* Center the container with margin */
+  }
+
+  .nav {
+    flex-direction: column; /* Stack buttons vertically */
+  }
+
+  .nav button {
+    padding: 12px 24px; /* Increase padding for larger touch targets */
+    margin: 5px 0; /* Add margin between buttons */
+  }
+
+  .main {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+
+  .content {
+    padding: 15px; /* Increase padding */
+  }
+  
+  .copy-button,
+  .btn_small {
+    padding: 10px 15px; /* Increase padding for larger touch targets */
+    font-size: 14px; /* Increase font size for readability */
+  }
+
+  /* Adjust font sizes for readability */
+  .Prompt-name, .English-Prompt, .Chinese-Prompt, span {
+    font-size: 16px; /* Larger font size */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav button {
+    padding: 10px 20px; /* Further increase padding */
+    font-size: 14px; /* Adjust font size */
+  }
+}
+
+/* Ensure images are responsive */
+.Prompt-Example {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional: Simplify or remove animations for mobile */
+@media screen and (max-width: 768px) {
+  .content {
+    animation: none; /* Disable animation on mobile */
+  }
+}
+
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.container {
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left: -65px;
+  margin-top: -20px;
+  width: 130px;
+  height: 40px;
+  text-align: center;
+}
+
+.btn-next {
+  color: black; /* 字体颜色改为黑色 */
+  background: #FFFFFF; /* 设定一个非透明的背景颜色，例如白色 */
+  border: 2px; /* 边框样式、颜色、宽度保持不变 */
+  border-radius: 8px; /* 给边框添加圆角保持不变 */
+  text-decoration: none;
+  text-transform: uppercase; /* 字母转大写保持不变 */
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* 兼容 Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  /* 移除透明效果后的阴影效果保持 */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.19) 0px 2px 8px 0px;
+  transition: transform 0.3s;
+}
+
+/* .btn-next:hover {
+  background-position: right top;
+} */
+
+.btn-next:is(:focus, :focus-within,:active) {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+/*
+.nav button:hover {
+  transform: translateY(-3px); /* 鼠标悬停时向上移动按钮
+}
+*/
+
+
+.btn_small {
+  /* background-color: #E0E0E0; 浅灰色背景，以确保黑色字体可见 */
+  display: inline-block;
+  background-color: #5A91FCFF;
+  color: #f6fdfd;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: 0.75rem;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+b {
+  outline:none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:100px;
+  background: #fff;
+  border: 2px solid #008CBA;
+  color: #008CBA;
+  letter-spacing:1px;
+  text-shadow:0;
+  font:{
+    size:12px;
+    weight:bold;
+  }
+  cursor: pointer;
+  transition: all 0.25s ease;
+&:active {
+    letter-spacing: 2px ;
+  }
+  &:after {
+    content:"";
+  }
+}
+.onclic {
+  width: 10px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+  border-color:$gray;
+  border-width:4px;
+  font-size:0;
+  border-left-color: #008CBA;
+  animation: rotating 2s 0.25s linear infinite;
+  &:hover {
+    color: dodgerblue;
+    background: white;
+  }
+}
+.validate {
+  content:"";
+  font-size:16px;
+  color: black;
+  background: dodgerblue;
+  border-radius: 50px;
+  &:after {
+    font-family:'FontAwesome';
+    content:" done \f00c";
+  }
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoomIn {
+    50% {
+    	transform: scale(1.2);
+    }
+    80% {
+    	transform: scale(1);
+    }
+}
+
+[data-theme='dark'] .nav button:hover {
+  background-color: #5A91FC;
+  color: white;
+}
+
+.nav button:hover {
+  background-color: #5A91FC;
+  color: white;
+}
+
+.btn-next:is(:focus, :focus-within,:active) {
+  background-color: #5A91FC;
+  color: white;
+}
+
+[data-theme='dark'] .btn-next.active {
+  background-color: #5A91FC;
+  color: white;
+}
+
+.btn-next.active {
+  background-color: #5A91FC;
+  color: white;
+}
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.content {
+  background-color: #ffffff8a;
+  border-radius: 5px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+[data-theme='dark'] .content {
+  background: #303032;
+  color: white;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-title {
+  text-align: center; /* 标题居中对齐 */
+  margin-top: [图片高度]; /* 根据固定图片的高度调整 */
+  padding: 12px 0 0 12px;
+  /* background-color: #f8f8f86e; 背景颜色，根据设计风格调整 */
+  color: #5A91FCFF; /* 字体颜色，根据设计风格调整 */
+  width: 100%; /* 宽度占满全宽 */
+  box-sizing: border-box; /* 防止内边距影响宽度计算 */
+  z-index: 10; /* 确保标题在图片之上 */
+  position: relative; /* 相对定位 */
+  /* border-radius: 25px; */
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+[data-theme='dark'] body {
+  background: #1B1B1D;
+  color: white;
+}
+
+header {
+  padding: 1rem;
+}
+
+[data-theme='dark'] .header {
+  /* border: 1px solid red; */
+  background: #333;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.header {
+  /* max-width: 1240px; */
+  margin: 0 auto;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+
+[data-theme='dark'] .nav button {
+  background: #333; /* 深色背景 */
+  color: #fff; /* 白色字体 */
+}
+
+
+.subtitle_wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#subtitle {
+  /* font-size: 18px; 设置副标题字号 */
+  color: black; /* 设置副标题颜色 */
+  text-align: center; /* 副标题居中对齐 */
+  margin-bottom: 20px; /* 底部留出一些空间 */
+  font-weight: normal;
+}
+
+[data-theme='dark'] #subtitle {
+  /* font-size: 18px; 设置副标题字号 */
+  color: white; /* 设置副标题颜色 */
+  text-align: center; /* 副标题居中对齐 */
+  margin-bottom: 20px; /* 底部留出一些空间 */
+  font-weight: normal;
+}
+
+
+.Prompt-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Prompt-Example {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.copy-button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-image {
+  width: 100%; /* 图片宽度占满全宽 */
+  height: auto; /* 保持图片的宽高比 */
+  position: fixed; /* 图片位置固定 */
+  top: 0; /* 与顶部对齐 */
+  left: 0; /* 与左侧对齐 */
+  z-index: -1; /* 确保图片不会覆盖其他内容 */
+}
+
+.copy-button:hover {
+  background-color: #2980b9;
+}
+
+span {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+</style>
+<style type="text/css">#_copy{align-items:center;background:#4494d5;border-radius:3px;color:#fff;cursor:pointer;display:flex;font-size:13px;height:30px;justify-content:center;position:absolute;width:60px;z-index:1000}#select-tooltip,#sfModal,.modal-backdrop,div[id^=reader-helper]{display:none!important}.modal-open{overflow:auto!important}._sf_adjust_body{padding-right:0!important}.enable_copy_btns_div{position:fixed;width:154px;left:10px;top:45%;background:#e7f1ff;border:2px solid #4595d5;font-weight:600;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;z-index:5000}.enable_copy_btns_logo{width:100%;background:#4595d5;text-align:center;font-size:12px;color:#e7f1ff;line-height:30px;height:30px}.enable_copy_btns_btn{display:block;width:128px;height:28px;background:#7f5711;border-radius:4px;color:#fff;font-size:12px;border:0;outline:0;margin:8px auto;font-weight:700;cursor:pointer;opacity:.9}.enable_copy_btns_btn:hover{opacity:.8}.enable_copy_btns_btn:active{opacity:1}</style><script src="chrome-extension://ekkkldemlhnacnfegdihallelglbnhnl/js/page_finish.js"></script><script src="https://speed.ilink-tk.com/spd/tongji?start=1713933187161" type="text/javascript" async="" charset="utf-8"></script></head>
+<body inmaintabuse="1">
+<header>
+  <div class="header">
+    <h1 class="page-title">AI 绘画提示词库</h1>
+    <div class="subtitle_wrapper"><span id="subtitle">一键复制，即可用于棚子</span><span class="typed-cursor" aria-hidden="true">|</span></div>
+  </div>
+</header>
+
+  <!-- 其他内容... -->
+
+<div class="nav">
+  <button class="btn-next btn1 active" onclick="pages(24, 'btn1');">Ui设计</button>
+  <button class="btn-next btn2" onclick="pages(25, 'btn2');">插画设计</button>
+  <button class="btn-next btn3" onclick="pages(26, 'btn3');">工业设计</button>
+  <button class="btn-next btn4" onclick="pages(30, 'btn4');">二次元</button>
+  <button class="btn-next btn5" onclick="pages(31, 'btn5');">国风设计</button>
+  <button class="btn-next btn6" onclick="pages(32, 'btn6');">动画人物</button>
+  <button class="btn-next btn7" onclick="pages(33, 'btn7');">IP设计</button>
+  <button class="btn-next btn8" onclick="pages(34, 'btn8');">国潮艺术</button>
+  <button class="btn-next btn9" onclick="window.open('https://a.wpzllq.top/market', '_blank');">探索更多</button>
+  <button class="btn-next btn10" onclick="window.open('https://a.wpzllq.top/painting', '_blank');">返回绘画</button>
+</div>
+<div class="main">
+          <div class="content" style="animation-delay: 0s;">
+            <div class="Prompt-name">模型名称：来战</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              a faceless shapeshifter, color explosion, in the style of 2d game art, vibrant, neon colors, paul pelletier, bold, colorful portraits, layered gestures, color gradients, pseudo-infrared --no skull
+              <button class="btn_small" onclick="copyToClipboard('a faceless shapeshifter, color explosion, in the style of 2d game art, vibrant, neon colors, paul pelletier, bold, colorful portraits, layered gestures, color gradients, pseudo-infrared --no skull')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              无脸变形者，色彩爆炸，2D游戏艺术风格，充满活力，霓虹色，保罗·佩利尔，大胆，彩色肖像，分层手势，颜色渐变，伪红外
+              <button class="btn_small" onclick="copyToClipboard('无脸变形者，色彩爆炸，2D游戏艺术风格，充满活力，霓虹色，保罗·佩利尔，大胆，彩色肖像，分层手势，颜色渐变，伪红外')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/10/25/gongzhonghaoqiaojiaihuihuasi_a_faceless_shapeshifter_color_expl_6258112a-6ad6-4d1b-89bb-e4d89d404eb8_20231025183243A187.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/10/25/gongzhonghaoqiaojiaihuihuasi_a_faceless_shapeshifter_color_expl_6258112a-6ad6-4d1b-89bb-e4d89d404eb8_20231025183243A187.png">
+          </div>
+          <div class="content" style="animation-delay: 0.2s;">
+            <div class="Prompt-name">模型名称：宿舍3D图标</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              a Dormitory 3D icon, cute shape, Clay style, Blue main body, white background, matte, minimalism, surrealism --ar 1:1 --s 180
+              <button class="btn_small" onclick="copyToClipboard('a Dormitory 3D icon, cute shape, Clay style, Blue main body, white background, matte, minimalism, surrealism --ar 1:1 --s 180')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              宿舍3D图标，可爱造型，粘土风格，蓝色主体，白色背景，哑光，极简主义，超现实主义
+              <button class="btn_small" onclick="copyToClipboard('宿舍3D图标，可爱造型，粘土风格，蓝色主体，白色背景，哑光，极简主义，超现实主义')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/09/27/gongzhonghaoqiaojiaihuihuasi_a_Dormitory_3D_icon_cute_shape_Cla_1f8cb2f1-4501-4f91-9ae3-6e789465f8fb_20230927163327A115.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/09/27/gongzhonghaoqiaojiaihuihuasi_a_Dormitory_3D_icon_cute_shape_Cla_1f8cb2f1-4501-4f91-9ae3-6e789465f8fb_20230927163327A115.png">
+          </div>
+          <div class="content" style="animation-delay: 0.4s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              icon representing the leaderboard, with the ribbon setting off the crown, more than a dozen different game ui icon on a grey background, cute,kawayii,flat color,2D game style ,soft-focus, vibrant cartoonish, --niji 5 --s 400
+              <button class="btn_small" onclick="copyToClipboard('icon representing the leaderboard, with the ribbon setting off the crown, more than a dozen different game ui icon on a grey background, cute,kawayii,flat color,2D game style ,soft-focus, vibrant cartoonish, --niji 5 --s 400')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              代表排行榜的图标，丝带衬托皇冠，灰色背景上十多个不同的游戏ui图标，可爱，卡哇伊，扁平化色彩，2D游戏风格，柔焦，充满活力的卡通风格
+              <button class="btn_small" onclick="copyToClipboard('代表排行榜的图标，丝带衬托皇冠，灰色背景上十多个不同的游戏ui图标，可爱，卡哇伊，扁平化色彩，2D游戏风格，柔焦，充满活力的卡通风格')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/09/27/gongzhonghaoqiaojiaihuihuasi_icon_representing_the_leaderboard__e9f77d7b-0c37-429d-a4c6-6e13c3b243de_20230927162626A113.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/09/27/gongzhonghaoqiaojiaihuihuasi_icon_representing_the_leaderboard__e9f77d7b-0c37-429d-a4c6-6e13c3b243de_20230927162626A113.png">
+          </div>
+          <div class="content" style="animation-delay: 0.6s;">
+            <div class="Prompt-name">模型名称：透明月饼</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              a cut in half transparent Chinese moon cake 3D rendering,gradient translucent glass melt, orange and pink gradient background, isometric view, white background, 3d render, blender, octane rendering, pastel color, award-winning, shiny/glossy
+              <button class="btn_small" onclick="copyToClipboard('a cut in half transparent Chinese moon cake 3D rendering,gradient translucent glass melt, orange and pink gradient background, isometric view, white background, 3d render, blender, octane rendering, pastel color, award-winning, shiny/glossy')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              切成半透明的中国月饼 3D 渲染，渐变半透明玻璃熔化，橙色和粉色渐变背景，等距视图，白色背景，3D 渲染，搅拌机，辛烷渲染，柔和的颜色，屡获殊荣，闪亮/光泽
+              <button class="btn_small" onclick="copyToClipboard('切成半透明的中国月饼 3D 渲染，渐变半透明玻璃熔化，橙色和粉色渐变背景，等距视图，白色背景，3D 渲染，搅拌机，辛烷渲染，柔和的颜色，屡获殊荣，闪亮/光泽')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/09/27/gongzhonghaoqiaojiaihuihuasi_a_cut_in_half_transparent_Chinese__185f73b8-11a3-49ff-a6ba-d110144e3748_20230927161938A111.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://shouhoubao.oss-cn-shanghai.aliyuncs.com/image/2023/09/27/gongzhonghaoqiaojiaihuihuasi_a_cut_in_half_transparent_Chinese__185f73b8-11a3-49ff-a6ba-d110144e3748_20230927161938A111.png">
+          </div>
+          <div class="content" style="animation-delay: 0.8s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Logo, icon set, UI/ UX, retro, colorful, modern, simplicity, transparent background
+              <button class="btn_small" onclick="copyToClipboard('Logo, icon set, UI/ UX, retro, colorful, modern, simplicity, transparent background')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              徽标、图标集、UI/UX、复古、多彩、现代、简约、透明背景
+              <button class="btn_small" onclick="copyToClipboard('徽标、图标集、UI/UX、复古、多彩、现代、简约、透明背景')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/13.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/13.png">
+          </div>
+          <div class="content" style="animation-delay: 1s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              holographic social media icons
+              <button class="btn_small" onclick="copyToClipboard('holographic social media icons')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              全息社交媒体图标
+              <button class="btn_small" onclick="copyToClipboard('全息社交媒体图标')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/20.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/20.png">
+          </div>
+          <div class="content" style="animation-delay: 1.2s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Ios16 theme style ICONS, flat design, simple fashion, fine details, 4K HD, 9 ICONS, yndall light effects under the spectrum of beautiful light baby blue! A sense of awe, surreal! super detailed, colorful, 8k, artstation trend, d&amp; d, fantasy, ray tracing, depth of field, bokeh, iridescent accents, vibrant, award winning, anato finnstark and marc simonetti, spectacular lighting, octane rendering
+              <button class="btn_small" onclick="copyToClipboard('Ios16 theme style ICONS, flat design, simple fashion, fine details, 4K HD, 9 ICONS, yndall light effects under the spectrum of beautiful light baby blue! A sense of awe, surreal! super detailed, colorful, 8k, artstation trend, d&amp; d, fantasy, ray tracing, depth of field, bokeh, iridescent accents, vibrant, award winning, anato finnstark and marc simonetti, spectacular lighting, octane rendering')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              ios16主题风格ICONS，扁平化设计，简约时尚，细节精致，4K高清，9个ICONS，光谱下的yndall光效，淡淡的淡蓝色！ 一种敬畏之感，超现实！ 超级详细、多彩、8k、artstation 趋势、d&amp;d、幻想、光线追踪、景深、背景虚化、彩虹色、充满活力、anato finnstark 和 marc simonetti、壮观的灯光、辛烷值渲染
+              <button class="btn_small" onclick="copyToClipboard('ios16主题风格ICONS，扁平化设计，简约时尚，细节精致，4K高清，9个ICONS，光谱下的yndall光效，淡淡的淡蓝色！ 一种敬畏之感，超现实！ 超级详细、多彩、8k、artstation 趋势、d&amp;d、幻想、光线追踪、景深、背景虚化、彩虹色、充满活力、anato finnstark 和 marc simonetti、壮观的灯光、辛烷值渲染')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/19.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/19.png">
+          </div>
+          <div class="content" style="animation-delay: 1.4s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Web And App Icons line design
+              <button class="btn_small" onclick="copyToClipboard('Web And App Icons line design')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              Web 和应用程序图标线设计
+              <button class="btn_small" onclick="copyToClipboard('Web 和应用程序图标线设计')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/18.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/18.png">
+          </div>
+          <div class="content" style="animation-delay: 1.6s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              UI Icons for a dashboard-related App. categories. Vector illustration. 2D/3D. One Line/ Solid/ Contour. blue color scheme. Muted/vibrant colors. Solid color/gradient. Embossed/Grain paper/Glass/Glossy/Matte texture. High-resolution. Minimalistic/ Realistic/Precious details. Consistent design. iPhone, IOS, Apple design. Award-winning. , Figma, Behance, Pinterest, Dribble. 4K
+              <button class="btn_small" onclick="copyToClipboard('UI Icons for a dashboard-related App. categories. Vector illustration. 2D/3D. One Line/ Solid/ Contour. blue color scheme. Muted/vibrant colors. Solid color/gradient. Embossed/Grain paper/Glass/Glossy/Matte texture. High-resolution. Minimalistic/ Realistic/Precious details. Consistent design. iPhone, IOS, Apple design. Award-winning. , Figma, Behance, Pinterest, Dribble. 4K')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              仪表板相关应用程序的 UI 图标。 类别。 矢量图。 2D/3D。 一条线/实体/轮廓。 蓝色配色方案。 柔和/鲜艳的色彩。 纯色/渐变。 压花/纹理纸/玻璃/光面/哑光质地。 高分辨率。 简约/逼真/珍贵的细节。 一致的设计。 iPhone，IOS，苹果设计,Figma、Behance、Pinterest、Dribble。 4K
+              <button class="btn_small" onclick="copyToClipboard('仪表板相关应用程序的 UI 图标。 类别。 矢量图。 2D/3D。 一条线/实体/轮廓。 蓝色配色方案。 柔和/鲜艳的色彩。 纯色/渐变。 压花/纹理纸/玻璃/光面/哑光质地。 高分辨率。 简约/逼真/珍贵的细节。 一致的设计。 iPhone，IOS，苹果设计,Figma、Behance、Pinterest、Dribble。 4K')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/17.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/17.png">
+          </div>
+          <div class="content" style="animation-delay: 1.8s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Beautiful application icon set for a sotial app, design, ux/ui, ux, ui
+              <button class="btn_small" onclick="copyToClipboard('Beautiful application icon set for a sotial app, design, ux/ui, ux, ui')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              为社交应用程序、设计、ui/ux、ux、ui 设置的漂亮应用程序图标
+              <button class="btn_small" onclick="copyToClipboard('为社交应用程序、设计、ui/ux、ux、ui 设置的漂亮应用程序图标')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/16.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/16.png">
+          </div>
+          <div class="content" style="animation-delay: 2s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Create me an icon pack for the following, in a blue and white theme using icons for a web app: files, settings, leave management, reports, notification board, and requests
+              <button class="btn_small" onclick="copyToClipboard('Create me an icon pack for the following, in a blue and white theme using icons for a web app: files, settings, leave management, reports, notification board, and requests')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              为以下项目创建一个图标包，蓝白主题使用网络应用图标：文件、设置、休假管理、报告、通知板和请求
+              <button class="btn_small" onclick="copyToClipboard('为以下项目创建一个图标包，蓝白主题使用网络应用图标：文件、设置、休假管理、报告、通知板和请求')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/15.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/15.png">
+          </div>
+          <div class="content" style="animation-delay: 2.2s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              6 UI Icons for a space - related App. Vector illustration. 3D. Solid. White, silver, green, pink, color scheme. vibrant colors. gradient. Glossy. High - resolution. Minimalistic, Realistic, Precious details. Consistent design. iPhone, IOS, Apple design. Award - winning. , Figma, Behance, Pinterest, Dribble. 4K
+              <button class="btn_small" onclick="copyToClipboard('6 UI Icons for a space - related App. Vector illustration. 3D. Solid. White, silver, green, pink, color scheme. vibrant colors. gradient. Glossy. High - resolution. Minimalistic, Realistic, Precious details. Consistent design. iPhone, IOS, Apple design. Award - winning. , Figma, Behance, Pinterest, Dribble. 4K')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              6 个空间相关应用程序的 UI 图标。 矢量图。 3D。 坚硬的。 白色，银色，绿色，粉色，配色方案。 鲜艳的色彩。 坡度。 光滑。 高分辨率。 简约、逼真、珍贵的细节。 一致的设计。 iPhone，IOS，苹果设计。 屡获殊荣。 、Figma、Behance、Pinterest、Dribble。 4K
+              <button class="btn_small" onclick="copyToClipboard('6 个空间相关应用程序的 UI 图标。 矢量图。 3D。 坚硬的。 白色，银色，绿色，粉色，配色方案。 鲜艳的色彩。 坡度。 光滑。 高分辨率。 简约、逼真、珍贵的细节。 一致的设计。 iPhone，IOS，苹果设计。 屡获殊荣。 、Figma、Behance、Pinterest、Dribble。 4K')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/14.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/14.png">
+          </div>
+          <div class="content" style="animation-delay: 2.4s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Mobile app screen design. skeuomorphic controls. light theme. minimal, elegant style. ux design. ui design. iOS design. centered, no crop. front view. --c 50
+              <button class="btn_small" onclick="copyToClipboard('Mobile app screen design. skeuomorphic controls. light theme. minimal, elegant style. ux design. ui design. iOS design. centered, no crop. front view. --c 50')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              移动应用程序屏幕设计。 拟物控制。 轻主题。 简约、优雅的风格。 用户体验设计。 用户界面设计。 iOS 设计。 居中，无作物。 正视图。
+              <button class="btn_small" onclick="copyToClipboard('移动应用程序屏幕设计。 拟物控制。 轻主题。 简约、优雅的风格。 用户体验设计。 用户界面设计。 iOS 设计。 居中，无作物。 正视图。')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/1.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/1.png">
+          </div>
+          <div class="content" style="animation-delay: 2.6s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Icons 3d icons vector style icons high quality, hd icons, ui ux 3d
+              <button class="btn_small" onclick="copyToClipboard('Icons 3d icons vector style icons high quality, hd icons, ui ux 3d')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              图标 3d 图标矢量风格图标高质量，高清图标，ui ux 3d
+              <button class="btn_small" onclick="copyToClipboard('图标 3d 图标矢量风格图标高质量，高清图标，ui ux 3d')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/12.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/12.png">
+          </div>
+          <div class="content" style="animation-delay: 2.8s;">
+            <div class="Prompt-name">模型名称：图标设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Design a set of app icons that incorporate elements of artificial intelligence and machine learning. The icons should be eye - catching and memorable, and should reflect the functionality of the associated app. Consider using geometric shapes, patterns, or data visualizations to convey the AI elements, and think about how the icons can stand out among a crowded field of app icons in an app store
+              <button class="btn_small" onclick="copyToClipboard('Design a set of app icons that incorporate elements of artificial intelligence and machine learning. The icons should be eye - catching and memorable, and should reflect the functionality of the associated app. Consider using geometric shapes, patterns, or data visualizations to convey the AI elements, and think about how the icons can stand out among a crowded field of app icons in an app store')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              设计一组包含人工智能和机器学习元素的应用程序图标。 图标应引人注目且令人难忘，并应反映相关应用程序的功能。 考虑使用几何形状、图案或数据可视化来传达 AI 元素，并思考图标如何在应用商店中拥挤的应用图标中脱颖而出
+              <button class="btn_small" onclick="copyToClipboard('设计一组包含人工智能和机器学习元素的应用程序图标。 图标应引人注目且令人难忘，并应反映相关应用程序的功能。 考虑使用几何形状、图案或数据可视化来传达 AI 元素，并思考图标如何在应用商店中拥挤的应用图标中脱颖而出')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/11.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/11.png">
+          </div>
+          <div class="content" style="animation-delay: 3s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Website template design for file management application ui, ux, ux/ ui design ultra clear
+              <button class="btn_small" onclick="copyToClipboard('Website template design for file management application ui, ux, ux/ ui design ultra clear')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              用于文件管理应用程序 ui、ux、ux/ui 设计的网站模板设计超清晰
+              <button class="btn_small" onclick="copyToClipboard('用于文件管理应用程序 ui、ux、ux/ui 设计的网站模板设计超清晰')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/10.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/10.png">
+          </div>
+          <div class="content" style="animation-delay: 3.2s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              A web app for handling repairs, services, and customers. Sleek, clean, modern design. UI, UX, navigation, information, usability, text, icons, states, large, fullscreen
+              <button class="btn_small" onclick="copyToClipboard('A web app for handling repairs, services, and customers. Sleek, clean, modern design. UI, UX, navigation, information, usability, text, icons, states, large, fullscreen')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              用于处理维修、服务和客户的 Web 应用程序。 时尚、干净、现代的设计。 UI、UX、导航、信息、可用性、文本、图标、状态、大、全屏
+              <button class="btn_small" onclick="copyToClipboard('用于处理维修、服务和客户的 Web 应用程序。 时尚、干净、现代的设计。 UI、UX、导航、信息、可用性、文本、图标、状态、大、全屏')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/9.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/9.png">
+          </div>
+          <div class="content" style="animation-delay: 3.4s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Create a user - friendly and visually appealing modern website&amp; app design for web developer, dark blue, teal, black and white colors, navigation menus, realistic, beautiful design, web design, ux/ ui, ux, ui, simplicity: A clean, simple design can make it easier for users to navigate the website and find the information they need. Readability: Use clear, legible fonts and appropriate font sizes to ensure that the content is easy to read. Accessibility: Make sure the website is accessible to users with disabilities, such as those who are blind or have low vision. Responsive design: With the increasing use of mobile devices to access the web, it's important to ensure that the website is mobile - friendly and works well on a variety of devices. Modern design: Use modern design elements, such as large images and bold colors, to create a visually appealing and contemporary website. Interactive elements: Consider adding interactive elements. Personalization: Use personalization techniques, such as personalized recommendations or tailored content, to make the website more relevant to individual users. — style 1000
+              <button class="btn_small" onclick="copyToClipboard('Create a user - friendly and visually appealing modern website&amp; app design for web developer, dark blue, teal, black and white colors, navigation menus, realistic, beautiful design, web design, ux/ ui, ux, ui, simplicity: A clean, simple design can make it easier for users to navigate the website and find the information they need. Readability: Use clear, legible fonts and appropriate font sizes to ensure that the content is easy to read. Accessibility: Make sure the website is accessible to users with disabilities, such as those who are blind or have low vision. Responsive design: With the increasing use of mobile devices to access the web, it's important to ensure that the website is mobile - friendly and works well on a variety of devices. Modern design: Use modern design elements, such as large images and bold colors, to create a visually appealing and contemporary website. Interactive elements: Consider adding interactive elements. Personalization: Use personalization techniques, such as personalized recommendations or tailored content, to make the website more relevant to individual users. — style 1000')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              为 Web 开发人员创建用户友好且具有视觉吸引力的现代网站和应用程序设计，深蓝色、蓝绿色、黑白颜色、导航菜单、逼真、美观的设计、网页设计、ux/ui、ux、ui、简单：干净、 简单的设计可以让用户更容易浏览网站并找到他们需要的信息。 可读性：使用清晰易读的字体和适当的字体大小，以确保内容易于阅读。 可访问性：确保网站可供残障用户访问，例如盲人或视力不佳的用户。 响应式设计：随着越来越多地使用移动设备访问网络，确保网站对移动设备友好并且在各种设备上运行良好非常重要。 现代设计：使用现代设计元素，例如大图像和大胆的颜色，创建一个视觉上吸引人的现代网站。 交互元素：考虑添加交互元素。 个性化：使用个性化技术，例如个性化推荐或量身定制的内容，使网站与个人用户更加相关。 — 样式 1000
+              <button class="btn_small" onclick="copyToClipboard('为 Web 开发人员创建用户友好且具有视觉吸引力的现代网站和应用程序设计，深蓝色、蓝绿色、黑白颜色、导航菜单、逼真、美观的设计、网页设计、ux/ui、ux、ui、简单：干净、 简单的设计可以让用户更容易浏览网站并找到他们需要的信息。 可读性：使用清晰易读的字体和适当的字体大小，以确保内容易于阅读。 可访问性：确保网站可供残障用户访问，例如盲人或视力不佳的用户。 响应式设计：随着越来越多地使用移动设备访问网络，确保网站对移动设备友好并且在各种设备上运行良好非常重要。 现代设计：使用现代设计元素，例如大图像和大胆的颜色，创建一个视觉上吸引人的现代网站。 交互元素：考虑添加交互元素。 个性化：使用个性化技术，例如个性化推荐或量身定制的内容，使网站与个人用户更加相关。 — 样式 1000')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/8.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/8.png">
+          </div>
+          <div class="content" style="animation-delay: 3.6s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Design a modern and intuitive website UI for a content management tool that is easy to use and navigate. The UI should be sleek and professional, and should help users easily organize and manage their content. The website should be visually appealing and functional, and should simplify the process of creating, editing, and publishing content. The UI should be user - friendly, and should allow users to manage their content effectively and efficiently
+              <button class="btn_small" onclick="copyToClipboard('Design a modern and intuitive website UI for a content management tool that is easy to use and navigate. The UI should be sleek and professional, and should help users easily organize and manage their content. The website should be visually appealing and functional, and should simplify the process of creating, editing, and publishing content. The UI should be user - friendly, and should allow users to manage their content effectively and efficiently')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              为易于使用和导航的内容管理工具设计现代且直观的网站 UI。 用户界面应该时尚而专业，并且应该帮助用户轻松地组织和管理他们的内容。 网站应该具有视觉吸引力和功能，并且应该简化创建、编辑和发布内容的过程。 用户界面应该是用户友好的，并且应该允许用户有效和高效地管理他们的内容
+              <button class="btn_small" onclick="copyToClipboard('为易于使用和导航的内容管理工具设计现代且直观的网站 UI。 用户界面应该时尚而专业，并且应该帮助用户轻松地组织和管理他们的内容。 网站应该具有视觉吸引力和功能，并且应该简化创建、编辑和发布内容的过程。 用户界面应该是用户友好的，并且应该允许用户有效和高效地管理他们的内容')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/7.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/7.png">
+          </div>
+          <div class="content" style="animation-delay: 3.8s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              A website homepage where we sell applications for web development, a top bar, a navigation menu on the left, and showing sections for the most downloaded most recent. ui ux design interface
+              <button class="btn_small" onclick="copyToClipboard('A website homepage where we sell applications for web development, a top bar, a navigation menu on the left, and showing sections for the most downloaded most recent. ui ux design interface')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              销售 Web 开发应用程序的网站主页，顶部栏，左侧导航菜单，并显示最近下载的部分,ui 用户体验设计界面
+              <button class="btn_small" onclick="copyToClipboard('销售 Web 开发应用程序的网站主页，顶部栏，左侧导航菜单，并显示最近下载的部分,ui 用户体验设计界面')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/6.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/6.png">
+          </div>
+          <div class="content" style="animation-delay: 4s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Beautiful high resolution mobile app design for car wash loyalty, dashboard, menu, sports car, blue color, ui, ux, ui/ ux,
+              <button class="btn_small" onclick="copyToClipboard('Beautiful high resolution mobile app design for car wash loyalty, dashboard, menu, sports car, blue color, ui, ux, ui/ ux,')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              洗车软件设计、仪表板、菜单、跑车、蓝色、ui、ux、ui/ux
+              <button class="btn_small" onclick="copyToClipboard('洗车软件设计、仪表板、菜单、跑车、蓝色、ui、ux、ui/ux')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/5.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/5.png">
+          </div>
+          <div class="content" style="animation-delay: 4.2s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Productivy app, list screen, wireframing, flat vector, Figma, hand - drawn, simple, sketch, mobile ui, user interface
+              <button class="btn_small" onclick="copyToClipboard('Productivy app, list screen, wireframing, flat vector, Figma, hand - drawn, simple, sketch, mobile ui, user interface')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              产品app，列表屏幕，线框图，平面矢量，Figma，手绘，简单，草图，移动 ui，用户界面
+              <button class="btn_small" onclick="copyToClipboard('产品app，列表屏幕，线框图，平面矢量，Figma，手绘，简单，草图，移动 ui，用户界面')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/4.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/4.png">
+          </div>
+          <div class="content" style="animation-delay: 4.4s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Mobile app, app design, ui, ux, design system, components, high quality, brand guidelines, branding, design components for app, drone app, design elements, grid system, flat design, figma screenshot
+              <button class="btn_small" onclick="copyToClipboard('Mobile app, app design, ui, ux, design system, components, high quality, brand guidelines, branding, design components for app, drone app, design elements, grid system, flat design, figma screenshot')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              移动应用程序、应用程序设计、用户界面、用户体验、设计系统、组件、高质量、品牌指南、品牌、应用程序设计组件、无人机应用程序、设计元素、网格系统、平面设计、figma 屏幕截图
+              <button class="btn_small" onclick="copyToClipboard('移动应用程序、应用程序设计、用户界面、用户体验、设计系统、组件、高质量、品牌指南、品牌、应用程序设计组件、无人机应用程序、设计元素、网格系统、平面设计、figma 屏幕截图')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/3.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/3.png">
+          </div>
+          <div class="content" style="animation-delay: 4.6s;">
+            <div class="Prompt-name">模型名称：界面设计</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              Circular and Sharing of Used Clothing" UI screen design for four screens, high - tech, iPhone14
+              <button class="btn_small" onclick="copyToClipboard('Circular and Sharing of Used Clothing" ui="" screen="" design="" for="" four="" screens,="" high="" -="" tech,="" iphone14')"="">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              旧衣循环与分享,四屏UI界面设计，高科技，iPhone14
+              <button class="btn_small" onclick="copyToClipboard('旧衣循环与分享,四屏UI界面设计，高科技，iPhone14')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='https://huihua.jiucyun.com/upload/images/2.png'">下载</button></p>
+            <img class="Prompt-Example" src="https://huihua.jiucyun.com/upload/images/2.png">
+          </div></div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  getLocalData();
+  pages(24, "btn1"); // 模拟点击第一个按钮
+});
+
+function pages(id, className) {
+  let btns = document.querySelectorAll('.btn-next');
+  btns.forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if (className) {
+    document.querySelector(`.${className}`).classList.add('active');
+  }
+
+  let main = document.querySelector('.main');
+  main.innerHTML = "";
+  fetch('https://huihua.jiucyun.com/prod-api/huihua/description/getListByCatId?categoryId=' + id)
+    .then(response => response.json())
+    .then(data => {
+      for (let i = 0; i < data.rows.length; i++) {
+        main.innerHTML += `
+          <div class="content">
+            <div class="Prompt-name">模型名称：${data.rows[i].name}</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              ${data.rows[i].enInstructions}
+              <button class="btn_small" onclick="copyToClipboard('${data.rows[i].enInstructions}')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              ${data.rows[i].instructions}
+              <button class="btn_small" onclick="copyToClipboard('${data.rows[i].instructions}')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='${data.rows[i].effectShow}'">下载</button></p>
+            <img class="Prompt-Example" src="${data.rows[i].effectShow}">
+          </div>`;
+      }
+    })
+    .then(() => {
+      let contentList = document.querySelectorAll('.content');
+      contentList.forEach((content, index) => {
+        content.style.animationDelay = `${index * 0.2}s`;
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+function getLocalData() {
+  let main = document.querySelector('.main');
+  main.innerHTML = "";
+
+  // 发送Ajax请求获取数据
+  fetch('http://api站地址/file.php')/**api站地址**/
+    .then(response => response.json())
+    .then(data => {
+      // 解析响应数据
+      for (let i = 0; i < data.length; i++) {
+        if (!data[i].thumb) {
+          continue; // 如果thumb为空，则跳过当前迭代，进入下一次循环
+        }
+
+        main.innerHTML += `
+          <div class="content">
+            <div class="Prompt-name">模型名称：${data[i].model || "Dell"}</div>
+            <div class="English-Prompt">
+              <span>英文提示</span>:<br>
+              ${data[i].promptEn}
+              <button class="btn_small" onclick="copyToClipboard('${data[i].promptEn}')">复制</button>
+            </div>
+            <div class="Chinese-Prompt">
+              <span>中文提示：</span><br>
+              ${data[i].prompt}
+              <button class="btn_small" onclick="copyToClipboard('${data[i].prompt}')">复制</button>
+            </div>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='${data[i].originalImgUrl}'">下载</button></p>
+            <img class="Prompt-Example" src="${data[i].thumb}">
+          </div>`;
+      }
+    })
+    .catch(error => {
+      console.error('错误:', error);
+    });
+}
+
+
+
+function copyToClipboard(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  alert('复制成功!');
+}
+
+// 页面加载完成后获取数据
+window.addEventListener('DOMContentLoaded', getLocalData);
+</script>
+
+<script>
+    var typed = new Typed('#subtitle', {
+      strings: ['让生产力加倍的 Prompt 快捷指令！', '一键复制，即可用于棚子-Midjourney绘画！', '棚子智能助手，你的终身学习生活聊天伙伴！'],
+      typeSpeed: 60,
+      backSpeed: 60,
+      backDelay: 500,
+      loop: true
+    });
+  </script><style data-typed-js-cursor-css="true">
+        .typed-cursor{
+          opacity: 1;
+        }
+        .typed-cursor.typed-cursor--blink{
+          animation: typedjsBlink 0.7s infinite;
+          -webkit-animation: typedjsBlink 0.7s infinite;
+                  animation: typedjsBlink 0.7s infinite;
+        }
+        @keyframes typedjsBlink{
+          50% { opacity: 0.0; }
+        }
+        @-webkit-keyframes typedjsBlink{
+          0% { opacity: 1; }
+          50% { opacity: 0.0; }
+          100% { opacity: 1; }
+        }
+      </style>r
+
+  <script>
+  window.addEventListener('message', function (event) {
+    try {
+      const data = JSON.parse(event.data);
+      const theme = data["data-theme"];
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+    } catch (e) {
+    }
+  });
+  </script>
+
+<div title="长按可拖动到任何位置" id="chat_config_gptid" style="background-image: url(&quot;chrome-extension://mgdekoneakpagflcnpfkobbggjbleech/icons/icon.png&quot;); background-size: 100% 100%; border-radius: 8px; cursor: pointer; width: 64px; height: 64px; z-index: 2147483647; position: fixed; top: 685px; right: 0px; left: 2181px;"></div><script src="chrome-extension://nhiheekdcnmfbapkmpbhmplfddenhjic/sm.bundle.js" data-pname="supercopy-v3" data-asset-path="https://spc3.s3.ap-east-1.amazonaws.com"></script></body></html>
